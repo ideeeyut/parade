@@ -150,6 +150,10 @@ gulp.task('js-vendor', (cb) => {
             'node_modules/angular/angular.js',
             'node_modules/angular-ui-router/release/angular-ui-router.js',
             'node_modules/oclazyload/dist/ocLazyLoad.js',
+            'node_modules/qrcode-generator/qrcode.js',
+            'node_modules/qrcode-generator/qrcode_UTF8.js',
+            'node_modules/angular-qrcode/angular-qrcode.js',
+            'node_modules/angularjs-geolocation/dist/angularjs-geolocation.min.js',
         ]),
         concat('vendor.min.js'),
         sourceMaps.init(),
@@ -187,6 +191,10 @@ gulp.task('lint-scss', (cb) => {
 });
 
 gulp.task('serve', () => {
+    if (browserSync.active) {
+        browserSync.exit();
+        console.log('stopping browser sync'); // eslint-disable-line no-console
+    }
     browserSync.init({
         files: ['./dist/**/*.*'],
         ghostMode: false,
@@ -199,7 +207,7 @@ gulp.task('serve', () => {
 });
 
 gulp.task('watch', () => {
-    watch(['src/app.js', 'src/stateConfig.js', 'src/services/**/*.js'], () => gulp.start('js-app'))
+    watch(['src/app.js', 'src/stateConfig.js', 'src/firebase.config.js', 'src/services/**/*.js'], () => gulp.start('js-app'))
         .on('error', (...args) => console.log('WATCH ERROR js-app', args)); // eslint-disable-line no-console
 
     watch(['src/components/**/*', 'src/styleConfig.scss'], () => gulp.start('components'))

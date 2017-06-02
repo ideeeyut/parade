@@ -19,12 +19,20 @@ export default ($locationProvider, $stateProvider) => {
             },
         })
         .state({
+            component: 'parade',
+            name: 'app.parade',
+            resolve: {
+                dependencies: loadDependencies('parade'),
+            },
+            url: '/',
+        })
+        .state({
             component: 'about',
             name: 'app.about',
             resolve: {
                 dependencies: loadDependencies('about'),
             },
-            url: '/',
+            url: '/about',
         })
         .state({
             component: 'todoList',

@@ -1,0 +1,5 @@
+<div>
+    <div ng-hide="$ctrl.user" ng-click="$ctrl.onLogin()">Log In</div>
+    <div ng-show="$ctrl.user" ng-click="$ctrl.onLogout()">{{ $ctrl.user.displayName }}</div>
+
+</div>
