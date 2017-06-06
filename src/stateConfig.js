@@ -24,7 +24,7 @@ export default ($locationProvider, $stateProvider) => {
             resolve: {
                 dependencies: loadDependencies('parade'),
             },
-            url: '/',
+            url: '/parade',
         })
         .state({
             component: 'about',
@@ -32,7 +32,7 @@ export default ($locationProvider, $stateProvider) => {
             resolve: {
                 dependencies: loadDependencies('about'),
             },
-            url: '/about',
+            url: '/',
         })
         .state({
             component: 'todoList',

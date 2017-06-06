@@ -19,7 +19,7 @@ export default class {
             let closest = GeoLocationService.getDistanceBetween(this.floats[0].position, this.coords);
             let closestIdx = 0;
 
-            for (let i = 1; i < this.floats.length; i++) {
+            for (let i = 1; i < this.floats.length; i += 1) {
                 const dist = GeoLocationService.getDistanceBetween(this.floats[i].position, this.coords);
                 if (dist < closest) {
                     closest = dist;
